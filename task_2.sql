@@ -18,7 +18,7 @@ ADD entity_id INT AFTER id,
 ADD CONSTRAINT fk_entity_id FOREIGN KEY (entity_id) REFERENCES entities(id);
 
 UPDATE infectious_cases_normalized i, entities e  
-SET i.entity_id = e.id WHERE e.code = i.code;
+SET i.entity_id = e.id WHERE e.code = i.code AND e.entity=i.entity;
 
 ALTER TABLE infectious_cases_normalized
 DROP COLUMN entity,
